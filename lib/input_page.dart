@@ -5,6 +5,7 @@ import 'icon_content.dart';
 
 const bottomContainerHeight = 80.0;
 const colourReusableCards = Color(0xFF1D1E33);
+const inactiveColourReusableCards = Color(0xFF111328);
 const bottomContainerColour = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
@@ -13,6 +14,26 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = inactiveColourReusableCards;
+  Color femaleCardColor = inactiveColourReusableCards;
+
+  void toggleColor(int gender) {
+    if (gender == 1) {
+      if (maleCardColor == inactiveColourReusableCards) {
+        maleCardColor = colourReusableCards;
+        femaleCardColor = inactiveColourReusableCards;
+      } else
+        maleCardColor = inactiveColourReusableCards;
+    }
+    if (gender == 2) {
+      if (femaleCardColor == inactiveColourReusableCards) {
+        femaleCardColor = colourReusableCards;
+        maleCardColor = inactiveColourReusableCards;
+      } else
+        femaleCardColor = inactiveColourReusableCards;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +50,12 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print('Male class was pressed ');
+                      setState(() {
+                        toggleColor(1);
+                      });
                     },
                     child: ReusableCard(
-                      colour: colourReusableCards,
+                      colour: maleCardColor,
                       cardChild: IconContent(
                         iconName: FontAwesomeIcons.mars,
                         label: 'MALE',
@@ -43,10 +66,12 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print('Female class was pressed');
+                      setState(() {
+                        toggleColor(2);
+                      });
                     },
                     child: ReusableCard(
-                      colour: colourReusableCards,
+                      colour: femaleCardColor,
                       cardChild: IconContent(
                         iconName: FontAwesomeIcons.venus,
                         label: 'FEMALE',
