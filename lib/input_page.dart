@@ -9,64 +9,72 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: ReusableCard(
-                      colour: Color(0xFF1D1E33),
-                    ),
+      appBar: AppBar(
+        title: Text('BMI CALCULATOR'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E33),
                   ),
-                  Expanded(
-                    child: ReusableCard(
-                      colour: Color(0xFF1D1E33),
-                    ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E33),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: ReusableCard(
-                      colour: Color(0xFF1D1E33),
-                    ),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E33),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: ReusableCard(
-                      colour: Color(0xFF1D1E33),
-                    ),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E33),
                   ),
-                  Expanded(
-                    child: ReusableCard(
-                      colour: Color(0xFF1D1E33),
-                    ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E33),
                   ),
-                ],
-              ),
-            )
-          ],
-        ));
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
 class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.colour});
-  Color colour;
+
+  final Color colour;
+  //Final makes the property immutable, as stateless widget are immutable
+  /*
+  Final vs const
+  a const is a compile time constant, for example it can be computed during compile time such as const a =4*8;
+  a final can be computed after run time, object properties should be final as it can be created whenever
+   */
   @override
   Widget build(BuildContext context) {
     return Container(
