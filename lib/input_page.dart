@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'resuable_card.dart';
 import 'icon_content.dart';
-
-const bottomContainerHeight = 80.0;
-const colourReusableCards = Color(0xFF1D1E33);
-const inactiveColourReusableCards = Color(0xFF111328);
-const bottomContainerColour = Color(0xFFEB1555);
+import 'constants.dart';
 
 enum Gender { male, female }
 
@@ -16,16 +12,16 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveColourReusableCards;
-  Color femaleCardColor = inactiveColourReusableCards;
+  Color maleCardColor = kInactiveColourReusableCards;
+  Color femaleCardColor = kInactiveColourReusableCards;
 
   void toggleColor(Gender selectedGender) {
     selectedGender == Gender.male
-        ? maleCardColor = colourReusableCards
-        : maleCardColor = inactiveColourReusableCards;
+        ? maleCardColor = kColourReusableCards
+        : maleCardColor = kInactiveColourReusableCards;
     selectedGender == Gender.female
-        ? femaleCardColor = colourReusableCards
-        : femaleCardColor = inactiveColourReusableCards;
+        ? femaleCardColor = kColourReusableCards
+        : femaleCardColor = kInactiveColourReusableCards;
   }
 
   @override
@@ -77,7 +73,34 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: colourReusableCards,
+                    colour: kColourReusableCards,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'HEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Row(
+                          textBaseline: TextBaseline
+                              .alphabetic, //NEEDS TO BE DEFINED WHEN USING TEXT TO ALIGN BASELINE
+                          mainAxisAlignment: MainAxisAlignment
+                              .center, //Along the height of the row
+                          crossAxisAlignment: CrossAxisAlignment
+                              .baseline, //Along the width of the row
+                          children: <Widget>[
+                            Text(
+                              '100',
+                              style: kNumberTextStyle,
+                            ),
+                            Text(
+                              'cm',
+                              style: kLabelTextStyle,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -88,22 +111,22 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: colourReusableCards,
+                    colour: kColourReusableCards,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: colourReusableCards,
+                    colour: kColourReusableCards,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColour,
+            color: kBottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           )
         ],
       ),
