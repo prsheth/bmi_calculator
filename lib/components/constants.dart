@@ -31,6 +31,11 @@ const kResultTextStyle = TextStyle(
   fontSize: 22.0,
   fontWeight: FontWeight.bold,
 );
+const kAlternateResultTextStyle = TextStyle(
+  color: Colors.red,
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+);
 
 const kBMITextStyle = TextStyle(
   fontSize: 100.0,
